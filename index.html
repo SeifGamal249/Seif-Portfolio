@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seif Eldeen Gamal Zahra | Hardware Engineer Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --panel-2: #182247;
+      --text: #e9eefc;
+      --muted: #b5c0e6;
+      --accent: #7aa2ff;
+      --accent-2: #9dd8ff;
+      --line: rgba(255,255,255,0.12);
+      --chip: rgba(122,162,255,0.14);
+      --shadow: 0 10px 30px rgba(0,0,0,0.28);
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #09101f 0%, #0b1020 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent-2); text-decoration: none; }
+    a:hover { opacity: 0.9; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(11,16,32,0.75);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 12px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 72px 0 36px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(122,162,255,0.20), transparent 22%),
+        radial-gradient(circle at 15% 0%, rgba(157,216,255,0.12), transparent 18%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: 34px;
+    }
+
+    .hero-side {
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(122,162,255,0.12), rgba(255,255,255,0.02));
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--chip);
+      color: var(--accent-2);
+      font-size: 0.9rem;
+      border: 1px solid rgba(122,162,255,0.2);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.08;
+      margin: 0 0 14px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 740px;
+      margin-bottom: 20px;
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .btn.primary {
+      background: linear-gradient(180deg, #7aa2ff, #5b84e6);
+      color: #06101f;
+      border-color: transparent;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 0.98rem;
+    }
+
+    .contact-list strong {
+      color: var(--accent-2);
+    }
+
+    section {
+      padding: 42px 0;
+    }
+
+    .section-title {
+      font-size: 1.55rem;
+      margin: 0 0 18px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      margin: 0 0 24px;
+      max-width: 760px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 22px;
+      background: var(--panel);
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid rgba(122,162,255,0.16);
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .item {
+      padding: 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .item-head h3 {
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    .date {
+      color: var(--accent-2);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .footer {
+      padding: 24px 0 48px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .hero-main, .hero-side {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Seif Eldeen Gamal Zahra</div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#training">Training</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="card hero-main">
+        <span class="eyebrow">Hardware • Embedded • Power Electronics</span>
+        <h1>Electrical Power & Machines Engineering Student Building Real Hardware Systems</h1>
+        <p class="subtitle">
+          I am focused on power electronics, embedded systems, and hardware design. I have hands-on experience in circuit simulation, PCB-related workflows, microcontroller-based systems, and synchronous buck converter design. I am aiming for hardware and power electronics engineering opportunities where I can build, test, and improve real systems.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="https://www.linkedin.com/in/seif-eldeen-gamal" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="mailto:seifgamal249@gmail.com">Email Me</a>
+          <a class="btn" href="#projects">View Projects</a>
+        </div>
+      </div>
+
+      <aside class="card hero-side" id="contact">
+        <h2 style="margin-top:0; font-size:1.2rem;">Quick Info</h2>
+        <div class="contact-list">
+          <div><strong>Name:</strong> Seif Eldeen Gamal Zahra</div>
+          <div><strong>Location:</strong> Alexandria, Egypt</div>
+          <div><strong>Email:</strong> <a href="mailto:seifgamal249@gmail.com">seifgamal249@gmail.com</a></div>
+          <div><strong>Phone:</strong> +20 127 259 7341</div>
+          <div><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/seif-eldeen-gamal" target="_blank" rel="noreferrer">linkedin.com/in/seif-eldeen-gamal</a></div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-sub">
+          I am an Electrical Power and Machines Engineering student at Alexandria University with strong interest in hardware design, embedded systems, and efficient power conversion. My work includes simulation, debugging, control-oriented projects, and practical hardware implementation. I enjoy translating engineering theory into working systems.
+        </p>
+        <div class="grid-2">
+          <div class="panel">
+            <h3 style="margin-top:0;">Education</h3>
+            <p style="margin-bottom:6px;"><strong>B.Sc. in Electrical Power and Machines Engineering</strong></p>
+            <p style="margin:0; color:var(--muted);">Alexandria University • Oct 2022 – Present</p>
+          </div>
+          <div class="panel">
+            <h3 style="margin-top:0;">Target Role</h3>
+            <p style="margin:0; color:var(--muted);">Hardware Engineer • Power Electronics Engineer • Embedded Systems Intern</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="grid-2">
+          <div class="panel">
+            <h3 style="margin-top:0;">Core Engineering</h3>
+            <div class="chips">
+              <span class="chip">Power Electronics</span>
+              <span class="chip">Embedded Systems</span>
+              <span class="chip">Circuit Simulation</span>
+              <span class="chip">Hardware Debugging</span>
+              <span class="chip">PWM Control</span>
+              <span class="chip">Sensor Interfacing</span>
+              <span class="chip">Motor Control</span>
+              <span class="chip">PCB Design Workflow</span>
+            </div>
+          </div>
+          <div class="panel">
+            <h3 style="margin-top:0;">Tools & Technologies</h3>
+            <div class="chips">
+              <span class="chip">AVR</span>
+              <span class="chip">ATmega</span>
+              <span class="chip">Arduino</span>
+              <span class="chip">ESP32</span>
+              <span class="chip">C</span>
+              <span class="chip">Embedded C</span>
+              <span class="chip">Python</span>
+              <span class="chip">SQL</span>
+              <span class="chip">MATLAB</span>
+              <span class="chip">Simulink</span>
+              <span class="chip">LTspice</span>
+              <span class="chip">Proteus</span>
+              <span class="chip">Altium Designer</span>
+              <span class="chip">Oscilloscope</span>
+              <span class="chip">GitHub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Selected Projects</h2>
+        <div class="timeline">
+          <article class="item">
+            <div class="item-head">
+              <h3>Synchronous Buck Converter (12V to 6V)</h3>
+              <div class="date">2026</div>
+            </div>
+            <ul>
+              <li>Designed and implemented a synchronous buck converter for efficient DC-DC step-down conversion.</li>
+              <li>Worked on MOSFET switching behavior, gate driving, and PWM-based control concepts.</li>
+              <li>Analyzed output voltage regulation, switching losses, and converter efficiency.</li>
+              <li>Simulated and validated the design using LTspice.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-head">
+              <h3>Torpedo ROV – GRC Competition (1st Place)</h3>
+              <div class="date">May 2025</div>
+            </div>
+            <ul>
+              <li>Designed the electrical control system including motor drivers and sensor integration.</li>
+              <li>Contributed to testing, system integration, and competition preparation.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-head">
+              <h3>Power Factor Correction System (Simulink)</h3>
+              <div class="date">May 2025</div>
+            </div>
+            <ul>
+              <li>Developed an automatic reactive power compensation model using capacitor banks.</li>
+              <li>Used Simulink to study power factor improvement and system behavior.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-head">
+              <h3>Elevator Control System</h3>
+              <div class="date">Jan 2025</div>
+            </div>
+            <ul>
+              <li>Designed a 4-floor elevator system using Arduino with safety interlocks and encoder feedback.</li>
+              <li>Worked on control logic and hardware interfacing.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-head">
+              <h3>Mars Rover</h3>
+              <div class="date">Oct 2024</div>
+            </div>
+            <ul>
+              <li>Developed electrical subsystems for an autonomous rover including motor control and sensors.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience & Activities</h2>
+        <div class="timeline">
+          <article class="item">
+            <div class="item-head">
+              <h3>Hardware Design Engineer – Torpedo Technical Team</h3>
+              <div class="date">Jul 2024 – Present</div>
+            </div>
+            <ul>
+              <li>Designed and simulated power and control circuits using LTspice, Proteus, and Altium Designer.</li>
+              <li>Contributed to PCB design and electrical integration for underwater ROV systems.</li>
+              <li>Participated in testing, debugging, and competition preparation.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-head">
+              <h3>Robotics Instructor – Robotica Academy</h3>
+              <div class="date">2026 – Present</div>
+            </div>
+            <ul>
+              <li>Delivered training in robotics fundamentals and Arduino programming.</li>
+              <li>Mentored students in practical robotics projects.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-head">
+              <h3>Volunteer – Planetarium Science Center, Bibliotheca Alexandrina</h3>
+              <div class="date">Jan 2025 – Jan 2026</div>
+            </div>
+            <ul>
+              <li>Supported STEM workshops and robotics activities for school students.</li>
+              <li>Assisted in organizing educational technology events and project showcases.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="training">
+      <div class="container">
+        <h2 class="section-title">Internships & Programs</h2>
+        <div class="timeline">
+          <article class="item">
+            <div class="item-head">
+              <h3>ITI Embedded Systems – AVR Internship (162 Hours)</h3>
+              <div class="date">Jul 2025 – Oct 2025</div>
+            </div>
+            <ul>
+              <li>Developed embedded applications using AVR microcontrollers and Embedded C.</li>
+              <li>Interfaced LM35 sensors, DC motors, servos, and LCD modules.</li>
+              <li>Implemented real-time control and hardware interfacing techniques.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-head">
+              <h3>DEPI AI and Data Science Track (6 Months)</h3>
+              <div class="date">Jul 2025 – Dec 2025</div>
+            </div>
+            <ul>
+              <li>Studied data preprocessing, model building, and visualization.</li>
+              <li>Built projects using Python, Pandas, NumPy, Scikit-learn, and SQL.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-head">
+              <h3>NTI Data Analysis Program – Alexandria Branch (120 Hours)</h3>
+              <div class="date">2026</div>
+            </div>
+            <ul>
+              <li>Completed an intensive 1.5-month training program in data analysis.</li>
+              <li>Covered data preprocessing, visualization, and basic machine learning concepts.</li>
+              <li>Worked with Python, Pandas, and Excel for data analysis tasks.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Built for GitHub Pages • Portfolio of Seif Eldeen Gamal Zahra
+    </div>
+  </footer>
+</body>
+</html>
